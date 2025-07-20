@@ -10,7 +10,7 @@ export default function Navbar() {
     <nav className="bg-green-700 text-white p-4 shadow-md">
       <div className="container mx-auto flex justify-between items-center">
         <NavLink to="/" className="text-2xl font-bold hover:text-green-200 transition">
-          PestTracker
+          FarmGuard
         </NavLink>
         <div className="space-x-8 text-lg">
           <NavLink to="/" className={linkClasses}>
