@@ -1,5 +1,5 @@
 
-const { searchSpecies, fetchOccurrences, fetchCommonPests } = require('../utils/inaturalistApi');
+const { searchSpecies, fetchOccurrences, fetchCommonPests } = require('../utils');
 
 
 const fetchPests = async (req, res) => {
