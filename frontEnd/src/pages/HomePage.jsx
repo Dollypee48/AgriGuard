@@ -46,8 +46,8 @@ export default function HomePage() {
     if (loading) {
       return (
         <div className="text-center py-8">
-          <div className="animate-spin h-8 w-8 border-t-2 border-b-2 border-green-600 rounded-full mx-auto"></div>
-          <p className="mt-2 text-gray-700">Loading pest data...</p>
+          <div className="animate-spin h-10 w-10 border-t-4 border-b-4 border-green-600 rounded-full mx-auto"></div>
+          <p className="mt-4 text-gray-700 text-lg font-medium">Loading pest data...</p>
         </div>
       );
     }
@@ -55,10 +55,10 @@ export default function HomePage() {
     if (error) {
       return (
         <div className="text-center text-red-600 py-8">
-          <p>{error}</p>
+          <p className="text-lg">{error}</p>
           <button
             onClick={loadPestData}
-            className="mt-4 px-5 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition"
+            className="mt-5 px-6 py-3 bg-green-600 text-white rounded-md hover:bg-green-700 transition"
           >
             Retry
           </button>
@@ -69,10 +69,10 @@ export default function HomePage() {
     if (pests.length === 0) {
       return (
         <div className="text-center text-gray-500 py-8">
-          <p>No pest data available.</p>
+          <p className="text-lg">No pest data available.</p>
           <button
             onClick={loadPestData}
-            className="mt-4 px-5 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition"
+            className="mt-5 px-6 py-3 bg-green-600 text-white rounded-md hover:bg-green-700 transition"
           >
             Try Again
           </button>
@@ -81,7 +81,7 @@ export default function HomePage() {
     }
 
     return (
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {pests.map((pest, index) => {
           const key =
             (typeof pest.id === 'string' || typeof pest.id === 'number')
@@ -99,21 +99,26 @@ export default function HomePage() {
   };
 
   return (
-    <main className="container mx-auto px-4 py-8">
-      <header className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-gray-800 mb-4">
-          Track <span className="text-green-600">Pests & Diseases</span>
-        </h1>
-        <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-          Verified data from Global Biodiversity Information Facility (GBIF)
-        </p>
-      </header>
+    <>
+      <main className="min-h-screen flex flex-col">
+        {/* Section 1: Hero / Intro */}
+        <section className="bg-green-50 py-16 px-4 text-center">
+          <h1 className="text-5xl font-extrabold text-gray-900 mb-4">
+            Track <span className="text-green-600">Pests & Diseases</span>
+          </h1>
+          <p className="max-w-3xl mx-auto text-lg text-gray-700">
+            Access verified and up-to-date pest and disease data to protect your crops and improve agricultural yields.
+          </p>
+        </section>
 
-      <section className="max-w-2xl mx-auto mb-12">
-        <SearchBar />
-      </section>
+        {/* Section 2: Search */}
+        <section className="py-12 px-4 bg-white shadow-md max-w-4xl mx-auto rounded-lg mt-10 w-full">
+          <h2 className="text-3xl font-semibold text-gray-800 mb-6 text-center">Search for Pests & Diseases</h2>
+          <SearchBar />
+        </section>
 
-    
-    </main>
+      </main>
+
+    </>
   );
 }

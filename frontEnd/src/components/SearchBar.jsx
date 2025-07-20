@@ -9,7 +9,7 @@ export default function SearchBar() {
     e.preventDefault();
     const trimmed = query.trim();
     if (trimmed) {
-      // Use 'species' as the query param to match Dashboard.jsx
+      
       navigate(`/dashboard?species=${encodeURIComponent(trimmed)}`);
     }
   };

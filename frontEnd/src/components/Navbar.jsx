@@ -1,21 +1,29 @@
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom';
 
 export default function Navbar() {
+  const linkClasses = ({ isActive }) =>
+    isActive
+      ? 'text-green-200 underline font-semibold transition'
+      : 'hover:underline hover:text-green-200 transition';
+
   return (
     <nav className="bg-green-700 text-white p-4 shadow-md">
       <div className="container mx-auto flex justify-between items-center">
-        <Link to="/" className="text-xl font-bold hover:text-green-200 transition">
+        <NavLink to="/" className="text-2xl font-bold hover:text-green-200 transition">
           PestTracker
-        </Link>
-        <div className="space-x-6">
-          <Link to="/" className="hover:underline hover:text-green-200 transition">
+        </NavLink>
+        <div className="space-x-8 text-lg">
+          <NavLink to="/" className={linkClasses}>
             Home
-          </Link>
-          <Link to="/dashboard" className="hover:underline hover:text-green-200 transition">
+          </NavLink>
+          <NavLink to="/dashboard" className={linkClasses}>
             Dashboard
-          </Link>
+          </NavLink>
+          <NavLink to="/about" className={linkClasses}>
+            About
+          </NavLink>
         </div>
       </div>
     </nav>
-  )
+  );
 }
