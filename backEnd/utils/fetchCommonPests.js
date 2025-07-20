@@ -1,10 +1,6 @@
-const searchSpeciesUtil = require('./searchSpecies');
-const fetchOccurrencesUtil = require('./fetchOccurrences');
+const searchSpecies = require('./searchSpecies');
+const fetchOccurrences = require('./fetchOccurrences');
 
-/**
- * Fetch data for a set of common pest species
- * @returns {Array<{ species: Object, occurrences: Array }>}
- */
 async function fetchCommonPests() {
   const commonPests = [
     'Phylloxera',
@@ -14,17 +10,15 @@ async function fetchCommonPests() {
     'Tuta absoluta',
   ];
 
-  const pestData = [];
+  const result = [];
   for (const name of commonPests) {
-    const species = await searchSpeciesUtil(name);
+    const species = await searchSpecies(name);
     if (species) {
-      const occurrences = await fetchOccurrencesUtil(species.id, 5);
-      pestData.push({ species, occurrences });
+      const occurrences = await fetchOccurrences(species.id, 5);
+      result.push({ species, occurrences });
     }
   }
-
-  return pestData;
+  return result;
 }
 
 module.exports = fetchCommonPests;
-

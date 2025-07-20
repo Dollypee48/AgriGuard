@@ -1,9 +1,5 @@
-const searchSpeciesFn = require('./searchSpecies');
-const fetchOccurrencesFn = require('./fetchOccurrences');
-const fetchCommonPestsFn = require('./fetchCommonPests');
-
 module.exports = {
-  searchSpecies: searchSpeciesFn,
-  fetchOccurrences: fetchOccurrencesFn,
-  fetchCommonPests: fetchCommonPestsFn,
+  searchSpecies: require('./searchSpecies'),
+  fetchOccurrences: require('./fetchOccurrences'),
+  fetchCommonPests: require('./fetchCommonPests'),
 };

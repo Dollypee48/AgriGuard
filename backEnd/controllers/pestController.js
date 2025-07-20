@@ -1,5 +1,7 @@
 
-const { searchSpecies, fetchOccurrences, fetchCommonPests } = require('../utils');
+// e.g. controllers/pestController.js
+const { fetchCommonPests, searchSpecies, fetchOccurrences } = require('../utils');
+
 
 
 const fetchPests = async (req, res) => {
@@ -12,7 +14,7 @@ const fetchPests = async (req, res) => {
   }
 };
 
-
+// Get pest details and occurrences by species name
 const fetchPestDetailsBySearch = async (req, res) => {
   const { species } = req.query;
 
