@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 5000;
 
 const app = express();
 
-// Connect to MongoDB once
+
 connectDB()
   .then(() => {
     console.log('✅ MongoDB connected');
@@ -22,24 +22,24 @@ connectDB()
     process.exit(1);
   });
 
-// Middleware
+
 app.use(cors(corsOptions));
 app.use(express.json());
 
-// API routes
+
 app.use('/api/pests', pestRoutes);
 
-// Health check endpoint
+
 app.get('/', (req, res) => {
   res.json({ status: 'healthy', version: '1.0.0' });
 });
 
-// Serve React frontend build in production (optional)
+
 if (process.env.NODE_ENV === 'production') {
   const buildPath = path.join(__dirname, 'client', 'build');
   app.use(express.static(buildPath));
 
-  // For any other routes, serve React index.html
+ 
   app.get('*', (req, res) => {
     res.sendFile(path.join(buildPath, 'index.html'));
   });
@@ -51,6 +51,9 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: 'Internal Server Error' });
 });
 
+app.get("/", (req, res) => {
+  res.send("FarmGuard backend is running ✅");
+});
 
 mongoose.connection.once('open', () => {
   app.listen(PORT, () => {
